@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const { Model, DataTypes } = require("sequelize");
-const { User, Topic } = require("../../tech-blob/models");
+const { User, Topic } = require("../models");
 
 class Item extends Model {}
 
@@ -31,21 +31,14 @@ Item.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [4],
       },
     },
-    url: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isUrl,
-        },
-    },
     comment_area: {
         type: DataTypes.STRING,
-        allowNull: false,   
+        allowNull: true,   
     },
     topic_id: {
       type: DataTypes.INTEGER,

@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const { Model, DataTypes } = require("sequelize");
-const { User } = require("../../tech-blob/models");
+const { User } = require("../models");
 
 class Topic extends Model {}
 
