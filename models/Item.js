@@ -31,21 +31,9 @@ Item.init(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4],
-      },
-    },
-    url: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          isUrl,
-        },
     },
     comment_area: {
-        type: DataTypes.STRING,
-        allowNull: false,   
+        type: DataTypes.STRING, 
     },
     topic_id: {
       type: DataTypes.INTEGER,
