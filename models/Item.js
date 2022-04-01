@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const { Model, DataTypes } = require("sequelize");
-const { User, Topic } = require("../../tech-blob/models");
+const { User, Topic } = require("../models");
 
 class Item extends Model {}
 
@@ -20,6 +20,12 @@ Item.init(
       },
     },
     display_url: {
+      type: DataTypes.STRING,
+    },
+    name: {
+      type: DataTypes.STRING,
+    },
+    comment_area: {
       type: DataTypes.STRING,
     },
     user_id: {
