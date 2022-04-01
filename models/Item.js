@@ -29,13 +29,19 @@ Item.init(
         key: "id",
       },
     },
+    name: {
+      type: DataTypes.STRING,
+    },
+    comment_area: {
+        type: DataTypes.STRING, 
+    },
     topic_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "topic",
         key: "id",
-      },
-    },
+      }
+    }
   },
   {
     sequelize,
