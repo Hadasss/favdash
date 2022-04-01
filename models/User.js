@@ -12,16 +12,21 @@ User.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
       allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
     username: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
-        len: [4],
-      },
+        isEmail: true
+      }
     },
     password: {
       type: DataTypes.STRING,
@@ -44,10 +49,11 @@ User.init(
       }
     },
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "user",
-  }
-);
+  }, 
+  );
 
 module.exports = User;
