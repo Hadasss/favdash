@@ -29,13 +29,31 @@ Item.init(
         key: "id",
       },
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4],
+      },
+    },
+    url: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isUrl,
+        },
+    },
+    comment_area: {
+        type: DataTypes.STRING,
+        allowNull: false,   
+    },
     topic_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "topic",
         key: "id",
-      },
-    },
+      }
+    }
   },
   {
     sequelize,
