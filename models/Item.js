@@ -22,6 +22,12 @@ Item.init(
     display_url: {
       type: DataTypes.STRING,
     },
+    name: {
+      type: DataTypes.STRING,
+    },
+    comment_area: {
+      type: DataTypes.STRING,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -29,24 +35,13 @@ Item.init(
         key: "id",
       },
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [4],
-      },
-    },
-    comment_area: {
-        type: DataTypes.STRING,
-        allowNull: true,   
-    },
     topic_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "topic",
         key: "id",
-      }
-    }
+      },
+    },
   },
   {
     sequelize,
