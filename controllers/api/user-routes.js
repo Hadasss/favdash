@@ -45,7 +45,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post("/", async (req, res) => {
+// POST /api/users
+router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -56,6 +57,7 @@ router.post("/", async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.username = dbUserData.username;
+      req.session.user_id = dbUserData.user_id;
 
       res.status(200).json(dbUserData);
     });
@@ -65,23 +67,19 @@ router.post("/", async (req, res) => {
   }
 });
 
-  
-  router.post('/login', (req, res) => {
-  
-    User.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(dbUserData => {
-      if (!dbUserData) {
-        res.status(400).json({ message: 'No user with that email address!' });
-        return;
-      }
-  
-      const validPassword = dbUserData.checkPassword(req.body.password);
+// Login
+  router.post('/login', async (req, res) => {
+    try {
+      const dbUserData = await User.findOne({
+        where: {
+          email: req.body.email
+        }
+      })
+
+      const validPassword = await dbUserData.checkPassword(req.body.password);
   
       if (!validPassword) {
-        res.status(400).json({ message: 'Incorrect password!' });
+        res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
         return;
       }
   
@@ -92,9 +90,13 @@ router.post("/", async (req, res) => {
     
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       });
-    });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
   });
   
+  // Logout
   router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
