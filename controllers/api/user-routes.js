@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const sequelize = require("../../config/connection");
 const { User, Topic, Item } = require("../../models");
 
 // GET all /api/users
@@ -53,12 +54,11 @@ router.get("/:id", (req, res) => {
     });
 });
 
-
 router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
     });
 
     req.session.save(() => {
@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
 });
 
 // Login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
