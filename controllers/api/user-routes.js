@@ -53,7 +53,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// POST /api/users
+
 router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
