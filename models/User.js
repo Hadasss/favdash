@@ -1,6 +1,6 @@
-const sequelize = require("../config/connection");
-const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -20,21 +20,14 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [5],
-      },
-    },
+    // FYI password commented out for testing purposes. bring back in when deploying.
+    // password: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [5],
+    //   },
+    // },
   },
   {
     hooks: {
