@@ -1,4 +1,10 @@
-<textarea name="topic-name" id="topic-name" cols="15" rows="2">Topic name here</textarea>
+<textarea
+  name="topic-name"
+  id="topic-name"
+  cols="15"
+  rows="2"
+  placeholder="Topic name here"
+></textarea>
 
 <button class="add-topic" type="button is-medium">
   <!--add Icon for create!-->
@@ -14,3 +20,16 @@
 
   </svg>
 </button>
+
+{{!-- list of existing topics (cards) --}}
+<ul>
+    {{#each topics as |topic|}}
+  <li>
+      {{> topic}}
+  </li>
+</ul>
+
+
+
+<script src="/javascript/add-topic.js"></script>
+<script src="/javascript/edit-topic.js"></script>
