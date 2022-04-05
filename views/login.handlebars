@@ -1,7 +1,7 @@
-<form class="login-form">
+{{!-- <form class="login-form">
   <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
+    <label for="username-login">username:</label>
+    <input type="text" id="username-login" />
   </div>
   <div>
     <label for="password-login">password:</label>
@@ -11,23 +11,36 @@
     <button type="submit">login</button>
   </div>
 </form>
+<a href="/signup">Signup Instead</a>
+<script src="/javascript/login.js"></script> --}}
 
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
+
+
+<div class="column is-one-third">
+
+<form class="login-form">
+
+<div class="field">
+  <label class="label" for="username-login">Username</label>
+  <div class="control">
+    <input class="input is-rounded" type="text" placeholder="e.g Alex" id="username-login">
   </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
+</div>
+
+<div class="field">
+  <label class="label" for="password-login">Password</label>
+  <div class="control">
+    <input class="input is-rounded" type="password" placeholder="e.g. password123" id="password-login">
   </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
+</div>
+
+<div>
+    <button type="submit" class="button is-link is-rounded">Login</button>
+</div>
+
 </form>
 
+</div>
+
+<a href="/signup">Sign Up Instead</a>
 <script src="/javascript/login.js"></script>

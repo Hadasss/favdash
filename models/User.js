@@ -20,14 +20,13 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // FYI password commented out for testing purposes. bring back in when deploying.
-    // password: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [5],
-    //   },
-    // },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [5],
+      },
+    },
   },
   {
     hooks: {
