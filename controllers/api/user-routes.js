@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const sequelize = require("../../config/connection");
 const { User, Topic, Item } = require("../../models");
 
 // GET all /api/users
@@ -59,14 +58,14 @@ router.post("/", async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
-      // email: req.body.email,
+      email: req.body.email,
       password: req.body.password,
     });
 
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
       req.session.username = dbUserData.username;
-      req.session.user_id = dbUserData.user_id;
 
       res.status(200).json(dbUserData);
     });
@@ -85,6 +84,13 @@ router.post("/login", async (req, res) => {
       },
     });
 
+    if (!dbUserData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
+      return;
+    }
+
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -95,11 +101,13 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
       req.session.loggedIn = true;
+      req.session.username = dbUserData.username;
+      req.session.user_id = dbUserData.id;
 
-      res.json({ user: dbUserData, message: "You are now logged in!" });
+      res
+        .status(200)
+        .json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
@@ -127,7 +135,7 @@ router.put("/:id", (req, res) => {
     },
   })
     .then((dbUserData) => {
-      if (!dbUserData) {
+      if (!dbUserData[0]) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
@@ -139,7 +147,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// Delete /api/users/1
+// DELETE /api/users/1
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
