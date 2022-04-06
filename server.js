@@ -19,14 +19,14 @@ const sess = {
 
 const app = express();
 const PORT = process.env.PORT || 3004;
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+app.use(session(sess));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-app.use(session(sess));
-app.use(routes);
 app.use(require("./controllers/"));
 
 sequelize.sync({ force: false }).then(() => {
