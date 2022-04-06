@@ -9,37 +9,17 @@ async function editItemHandler(e) {
     window.location.toString().split("/").length - 1
   ];
 
-  const response = await fetch(`/api/items/edit/${id}`, {
+  const response = await fetch(`/api/items/${id}`, {
     method: "PUT",
     body: JSON.stringify({ name, display_url, comment_area, url }),
     headers: { "Content-type": "application/json" },
   });
 
   if (response.ok) {
-    window.location.reload();
-  } else {
-    alert(response.statusText);
-  }
-}
-
-async function deleteItemHandler() {
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-
-  const response = await fetch(`/api/items/${id}`, {
-    method: "DELETE",
-  });
-
-  if (response.ok) {
-    window.location.reload();
+    window.location.replace("/dashboard");
   } else {
     alert(response.statusText);
   }
 }
 
 document.querySelector("#edit-item").addEventListener("click", editItemHandler);
-
-document
-  .querySelector("#delete-item")
-  .addEventListener("click", deleteItemHandler);
