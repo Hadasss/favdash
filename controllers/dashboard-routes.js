@@ -1,11 +1,125 @@
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { User } = require('../models');
-const withAuth = require('../utils/authentication');
+const router = require("express").Router();
+const sequelize = require("../config/connection");
+const { User, Topic, Item } = require("../models");
+const withAuth = require("../utils/authentication");
 
-router.get('/', withAuth, (req, res) => {
-    res.render('dashboard', {loggedIn: true})
-  });
-  
-  module.exports = router;
-  
+router.get("/", withAuth, (req, res) => {
+  Topic.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "name"],
+    include: [
+      {
+        model: Item,
+        attributes: ["id", "url", "display_url", "name", "comment_area"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbTopicData) => {
+      const topics = dbTopicData.map((topic) => topic.get({ plain: true }));
+      console.log(topics);
+      res.render("dashboard", { topics, loggedIn: true });
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get("/edit/:id", (req, res) => {
+  Topic.findOne(
+    {
+      where: {
+        id: req.params.id,
+      },
+    },
+    {
+      include: {
+        model: User,
+        attributes: ["username"],
+      },
+    }
+  )
+    .then((dbTopicData) => {
+      if (!dbTopicData) {
+        res.status(400).json({ message: "No topic found with this id" });
+        return;
+      }
+      res.render("edit-topic", dbTopicData);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get("/:id", (req, res) => {
+  Topic.findOne({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbTopicData) => {
+      if (!dbTopicData) {
+        res.status(404).json({ message: "No topic found with this id" });
+        return;
+      }
+      res.render("delete-topic", dbTopicData);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+// add delete topic
+router.delete("/:id", (req, res) => {
+  Topic.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbTopicData) => {
+      if (!dbTopicData) {
+        res.status(404).json({ message: "No topic found with this id" });
+        return;
+      }
+      res.json(dbTopicData);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get("/add-item", (req, res) => {
+  res.render("add-item", dbItemData);
+});
+
+// add add item
+router.post("/add-item", (req, res) => {
+  Item.create({
+    name: req.body.name,
+    url: req.body.url,
+    display_url: req.body.display_url,
+    comment_area: req.body.comment_area,
+  })
+    .then((dbItemData) => res.json(dbItemData))
+    .catch((err) => res.status(500).json(err));
+});
+
+//edit item
+router.put("/edit-item/:id", (req, res) => {
+  Item.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbItemData) => {
+      if (!dbItemData) {
+        res.status(400).json({ message: "No item was found with this id" });
+        return;
+      }
+      res.json(dbItemData);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+module.exports = router;

@@ -22,14 +22,19 @@
 </button>
 
 {{!-- list of existing topics (cards) --}}
+{{!-- {{#if topics.length}} --}}
+<div>
+
 <ul>
     {{#each topics as |topic|}}
   <li>
-      {{> topic}}
+      {{>topic}}
   </li>
+  {{/each}}
 </ul>
 
-
+</div>
+{{!-- {{/if}} --}}
 
 <script src="/javascript/add-topic.js"></script>
-<script src="/javascript/edit-topic.js"></script>
+

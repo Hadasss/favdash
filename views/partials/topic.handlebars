@@ -1,21 +1,20 @@
-<div>
-<div>
-  <p>{{name}}</p>  
+<div class="notification is-danger">
+    <p>{{name}}</p>  
+    <div>
+    <div>
+        <a href="/dashboard/edit/{{id}}">Edit topic</a>
+     
+        <a href="/dashboard/{{id}}">Delete topic</a>
+    </div>
+
+        <ul>
+            {{#each items as |item|}}
+            <li>
+            {{>item}}
+            </li>
+            {{/each}}
+        </ul>
+        <a href="/add-item">Add new item</a>
+    </div>
 </div>
-<div>
-    <ul>
-        {{#each items as |item|}}
-        <li>
-            {{> item}}
-        </li>
-    </ul>
-    <button href="/add-item">Add new item</button>
-</div>
 
-<button id="edit-topic">edit topic</button>
-<button id="delete-topic">delete topic</button>
-</div>
-
-
-
-<script src="/javascript/edit-delete-topic.js"></script>

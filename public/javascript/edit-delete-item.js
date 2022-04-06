@@ -1,4 +1,5 @@
-async function editItemHandler() {
+async function editItemHandler(e) {
+  e.preventDefault();
   const name = document.querySelector("#item-name").value.trim();
   const display_url = document.querySelector("#display_url").value.trim();
   const url = document.querySelector("#url").value.trim();
@@ -8,7 +9,7 @@ async function editItemHandler() {
     window.location.toString().split("/").length - 1
   ];
 
-  const response = await fetch(`/api/items/${id}`, {
+  const response = await fetch(`/api/items/edit/${id}`, {
     method: "PUT",
     body: JSON.stringify({ name, display_url, comment_area, url }),
     headers: { "Content-type": "application/json" },

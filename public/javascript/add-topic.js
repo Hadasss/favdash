@@ -1,5 +1,4 @@
 async function addTopicHandler() {
-  console.log("clicked");
   const name = document.querySelector("#topic-name").value.trim();
 
   const response = await fetch("/api/topics", {

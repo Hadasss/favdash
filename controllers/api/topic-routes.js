@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { User, Topic, Item } = require("../../models");
 
 router.get("/", (req, res) => {
-  // if (req.session.loggedIn) {
   Topic.findAll({
     include: [
       {
@@ -19,7 +18,6 @@ router.get("/", (req, res) => {
       res.json(dbTopicData);
     })
     .catch((err) => res.status(500).json(err));
-  // }
 });
 
 router.get("/:id", (req, res) => {
@@ -90,12 +88,11 @@ router.put("/:id", (req, res) => {
         return;
       }
       res.json(dbTopicData);
-      // window.location.reload();
     })
     .catch((err) => res.status(500).json(err));
 });
 
-// delete topic
+delete topic;
 router.delete("/:id", (req, res) => {
   Topic.destroy({
     where: {
@@ -108,7 +105,6 @@ router.delete("/:id", (req, res) => {
         return;
       }
       res.json(dbTopicData);
-      // window.location.reload();
     })
     .catch((err) => res.status(500).json(err));
 });
