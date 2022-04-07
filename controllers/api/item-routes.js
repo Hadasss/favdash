@@ -56,6 +56,20 @@ router.put("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Topic,
+        attributes: ["id"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
   })
     .then((dbItemData) => {
       if (!dbItemData) {
@@ -67,7 +81,6 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-// delete item
 router.delete("/:id", (req, res) => {
   Item.destroy({
     where: {

@@ -26,7 +26,6 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbTopicData) => {
       const topics = dbTopicData.map((topic) => topic.get({ plain: true }));
-      console.log(topics);
       res.render("dashboard", { topics, loggedIn: true });
     })
     .catch((err) => res.status(500).json(err));
@@ -89,46 +88,20 @@ router.delete("/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-// router.get("/add-item", (req, res) => {
-//   Item.findAll().then((dbItemData) => res.render("add-item", dbItemData));
-// });
+router.get("/add-item", (req, res) => {
+  Item.findAll().then((dbItemData) => {
+    const items = dbItemData.map((item) => item.get({ plain: true }));
 
-// // add add item
-// router.post("/add-item", (req, res) => {
-//   Item.create({
-//     name: req.body.name,
-//     url: req.body.url,
-//     display_url: req.body.display_url,
-//     comment_area: req.body.comment_area,
-//   })
-//     .then((dbItemData) => res.json(dbItemData))
-//     .catch((err) => res.status(500).json(err));
-// });
+    res.render("add-item", { items });
+  });
+});
 
 router.get("/edit-item/:id", (req, res) => {
-  Item.findOne(
-    {
-      where: {
-        id: req.params.id,
-      },
+  Item.findOne({
+    where: {
+      id: req.params.id,
     },
-    {
-      include: [
-        {
-          model: Topic,
-          attributes: ["id", "name"],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
-    }
-  )
+  })
     .then((dbItemData) => {
       if (!dbItemData) {
         res.status(400).json({ message: "no item was found with this id" });
@@ -139,52 +112,20 @@ router.get("/edit-item/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-//edit item
-// router.put("/edit-item/:id", (req, res) => {
-//   Item.update(req.body, {
-//     where: {
-//       id: req.params.id,
-//     },
-//   })
-//     .then((dbItemData) => {
-//       if (!dbItemData) {
-//         res.status(400).json({ message: "No item was found with this id" });
-//         return;
-//       }
-//       res.json(dbItemData);
-//     })
-//     .catch((err) => res.status(500).json(err));
-// });
-
-// router.delete("/:id", (req, res) => {
-//   Item.destroy({
-//     where: {
-//       id: req.params.id,
-//     },
-//   })
-//     .then((dbItemData) => {
-//       if (!dbItemData) {
-//         res.status(400).json({ message: "No item was found with this id" });
-//         return;
-//       }
-//       res.json(dbItemData);
-//     })
-//     .catch((err) => res.status(500).json(err));
-// });
-
-router.delete("/delete-item/:id", (req, res) => {
-  Item.destroy({
+router.get("/delete-item/:id", (req, res) => {
+  Item.findOne({
     where: {
       id: req.params.id,
     },
   })
     .then((dbItemData) => {
       if (!dbItemData) {
-        res.status(400).json({ message: "No item was found with this id" });
+        res.status(400).json({ message: "no item was found with this id" });
         return;
       }
       res.render("delete-item", dbItemData);
     })
     .catch((err) => res.status(500).json(err));
 });
+
 module.exports = router;

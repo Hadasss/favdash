@@ -1,9 +1,8 @@
-async function editItemHandler(e) {
-  e.preventDefault();
-  const name = document.querySelector("#item-name").value.trim();
-  const display_url = document.querySelector("#display_url").value.trim();
-  const url = document.querySelector("#url").value.trim();
-  const comment_area = document.querySelector("#comment_area").value.trim();
+async function editItemHandler() {
+  const name = document.querySelector(".name").value.trim();
+  const display_url = document.querySelector(".display-url").value.trim();
+  const url = document.querySelector(".url").value.trim();
+  const comment_area = document.querySelector(".comment-area").value.trim();
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
@@ -11,7 +10,7 @@ async function editItemHandler(e) {
 
   const response = await fetch(`/api/items/${id}`, {
     method: "PUT",
-    body: JSON.stringify({ name, display_url, comment_area, url }),
+    body: JSON.stringify({ name, display_url, url, comment_area }),
     headers: { "Content-type": "application/json" },
   });
 
@@ -22,4 +21,4 @@ async function editItemHandler(e) {
   }
 }
 
-document.querySelector("#edit-item").addEventListener("click", editItemHandler);
+document.querySelector("#edit-form").addEventListener("click", editItemHandler);

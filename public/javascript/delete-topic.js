@@ -4,7 +4,6 @@ async function deleteTopicHandler() {
     window.location.toString().split("/").length - 1
   ];
 
-  console.log(id);
   const response = await fetch(`/api/topics/${id}`, {
     method: "DELETE",
   });
