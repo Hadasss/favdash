@@ -4,45 +4,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fav Dash</title>
-    {{!-- <link rel="stylesheet" href="/public/stlylesheets/style.css"> --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    {{!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/stlylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    {{!
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> }}
     <script src=""></script>
   </head>
 
-
-<body>
-<nav class="navbar has-background-info-light" role="navigation" aria-label="main-navigation">
-{{#if loggedIn}}
-<div class="navbar-brand">
-    <a href="/dashboard" class="navbar-item title has-text-info-dark ml-5">Dashboard</a>
-</div>
-    <div class="navbar-end">
-        <div class="navbar-item">
+  <body>
+    <nav
+      class="navbar has-background-info-light"
+      role="navigation"
+      aria-label="main-navigation"
+    >
+      {{#if loggedIn}}
+        <div class="navbar-brand">
+          <a
+            href="/dashboard"
+            class="navbar-item title has-text-info-dark ml-5"
+          >Dashboard</a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
             <div class="buttons">
-                <a class="button is-info is-rounded mr-5">
-                    <strong id="logout">Logout</strong>
-                </a>
+              <a class="button is-info is-rounded mr-5">
+                <strong id="logout">Logout</strong>
+              </a>
             </div>
+          </div>
         </div>
-    </div>
-{{else}}
-<div class="navbar-brand has-background-info-light">
-    <p class="navbar-item title is-family-secondary ml-5 has-text-info-dark">Fav-Dash</p>
-</div>
-<div class="navbar-end">
-    <div class="navbar-item">
-        <div class="buttons">
-            <a class="button is-info is-rounded mr-5" href="/login">
-            <strong>Login</strong>
-            </a>
+      {{else}}
+        <div class="navbar-brand has-background-info-light">
+          <p
+            class="navbar-item title is-family-secondary ml-5 has-text-info-dark"
+          >Fav-Dash</p>
         </div>
-    </div>
-</div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-info is-rounded mr-5" href="/login">
+                <strong>Login</strong>
+              </a>
+            </div>
+          </div>
+        </div>
 
-{{/if}}
+      {{/if}}
     </nav>
     <main>
       {{{body}}}
