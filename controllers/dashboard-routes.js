@@ -31,12 +31,16 @@ router.get("/", withAuth, (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Item.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "name", "url", "display_url", "comment_area"],
     include: [
       {
         model: Topic,
-        attributes: ["name"],
+        attributes: ["id", "name"],
         include: {
           model: User,
           attributes: ["username"],
