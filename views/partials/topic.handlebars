@@ -1,0 +1,20 @@
+<div class="notification is-danger">
+    <p>{{name}}</p>  
+    <div>
+    <div>
+        <a href="/dashboard/edit/{{id}}">Edit topic</a>
+     
+        <a href="/dashboard/{{id}}">Delete topic</a>
+    </div>
+
+        <ul>
+            {{#each items as |item|}}
+            <li>
+            {{>item}}
+            </li>
+            {{/each}}
+        </ul>
+        <a href="/dashboard/add-item">Add new item</a>
+    </div>
+</div>
+

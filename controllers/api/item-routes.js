@@ -50,13 +50,26 @@ router.post("/", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-// TODO update item
+// update item
 router.put("/:id", (req, res) => {
-  //   if (req.session) {
   Item.update(req.body, {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Topic,
+        attributes: ["id"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
   })
     .then((dbItemData) => {
       if (!dbItemData) {
@@ -66,10 +79,8 @@ router.put("/:id", (req, res) => {
       res.json(dbItemData);
     })
     .catch((err) => res.status(500).json(err));
-  //   }
 });
 
-// TODO delete item
 router.delete("/:id", (req, res) => {
   Item.destroy({
     where: {
@@ -82,7 +93,6 @@ router.delete("/:id", (req, res) => {
         return;
       }
       res.json(dbItemData);
-      //   window.location.reload();
     })
     .catch((err) => res.status(500).json(err));
 });

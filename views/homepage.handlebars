@@ -1,3 +1,14 @@
-        <div class="card">
-<p>Card</p>
-        </div>
+{{#if topics.length}}
+  <ul>
+    <li>
+      <div class="card">
+        <p>Card</p>
+      </div>
+
+    </li>
+  </ul>
+{{else}}
+
+  <p>You have no topics yet. Create your first one!</p>
+
+{{/if}}
