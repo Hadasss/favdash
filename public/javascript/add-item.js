@@ -1,8 +1,8 @@
 async function addItemHandler() {
-  const name = document.querySelector(".name").value.trim();
-  const url = document.querySelector(".url").value;
-  const display_url = document.querySelector(".display-url").value.trim();
-  const comment_area = document.querySelector(".comment-area").value.trim();
+  const name = document.querySelector("#name").value.trim();
+  const url = document.querySelector("#url").value.trim();
+  const display_url = document.querySelector("#display-url").value.trim();
+  const comment_area = document.querySelector("#comment-area").value.trim();
 
   const response = await fetch("/api/items", {
     method: "POST",
