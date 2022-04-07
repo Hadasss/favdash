@@ -1,29 +1,31 @@
 <html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fav Dash</title>
-  <link rel="stylesheet" href="/stlylesheets/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-  {{!
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> }}
-  <script src=""></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fav Dash</title>
+    <link rel="stylesheet" href="/stlylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <script src=""></script>
+  </head>
 
-<body>
-  <nav class="navbar has-background-info-light" role="navigation" aria-label="main-navigation">
-    {{#if loggedIn}}
-    <div class="navbar-brand">
-      <a href="/dashboard" class="navbar-item title has-text-info-dark ml-5">Dashboard</a>
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-info is-rounded mr-5">
-            <strong id="logout">Logout</strong>
+  <body>
+      <section class="hero is-small has-background-info-light">
+        <div class="hero-body">
+           <nav
+      class="navbar has-background-info-light"
+      role="navigation"
+      aria-label="main-navigation"
+    >
+      {{#if loggedIn}}
+        <div class="navbar-brand">
+          <a
+            href="/dashboard"
+            class="navbar-item title has-text-info-dark ml-5"
+          >Dashboard
           </a>
         </div>
       </div>
@@ -42,13 +44,24 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     {{/if}}
   </nav>
   <main>
     {{{body}}}
+=======
+      {{/if}}
+    </nav> 
+        </div>
+    </section>
+    
+    <main>
+      {{{body}}}
+>>>>>>> styling/topic-insert
 
   </main>
 
+<<<<<<< HEAD
   <footer>
     <div id="footer" class="is-flex is-align-items-center">
       <div class="footer-item">
@@ -105,5 +118,61 @@
   <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
+=======
+    
+    <footer class="footer flex-wrap-wrap has-background-info-light p-5">
+  <div class="content has-text-centered">
+
+    <p class="pb-2">
+      <strong>Made With <ion-icon name="heart-circle-outline"></ion-icon> by The Coding Cavillers</strong>
+    </p>
+    <div class="columns p-5">
+        <div class="column">
+            <div class="has-text-justify button is-white-ter is-rounded">
+                <a href="https://github.com/Hadasss" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                Hadas
+                </a>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="has-text-justify button is-white-ter is-rounded">
+                <a href="https://github.com/DavidTJGriffin" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                David Griffin
+                </a>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="has-text-justify button is-white-ter is-rounded">
+                <a href="https://github.com/BeccaHurtado" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                Rebecca Hurtado
+                </a>
+            </div>
+        </div>
+
+        <div class="column buttons">
+            <div class="has-text-justify button is-white-ter is-rounded">
+                <a href="https://github.com/SpiffTrip" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                Christian Adkins
+                </a>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+</footer>
+
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    {{#if loggedIn}}
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+  </body>
+>>>>>>> styling/topic-insert
 
 </html>
