@@ -88,20 +88,14 @@
      border-color: var(--third-color);
      
  }
+*/
 
- footer h4 {
-    
-     text-decoration: none;
-     color: var(--secondary-color);
-     display: inline;
-     
- }
+#footer{
+    display: flex;
+    flex-direction: row;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+    background-color: #EFF5FB;
+}
 
- footer a {
-     text-decoration: none;
-     color: var(--secondary-color);
-     float: right;
-     margin: 10px 10px;
-     
- }
-   */
