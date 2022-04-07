@@ -1,7 +1,23 @@
-<form id="update-topic">
-  <textarea name="edit-topic" id="topic-name">{{topic.name}}</textarea>
+<form class="column is-6 m-5" id="update-topic">
+  <a href="/dashboard">&larr; Back to dashboard</a>
 
-  <button type="submit">Update</button>
+  <h2 class="title is-2">Edit your topic?</h2>
+
+  <div class="field">
+    <label class="label">Topic Name</label>
+
+    <div class="control">
+      <input
+        class="input name"
+        type="text"
+        id="topic-name"
+        placeholder="Topic Name"
+        value="{{topic.name}}"
+      />
+    </div>
+  </div>
+
+  <button class="mt-5 button is-warning" type="submit">Update</button>
 
 </form>
 

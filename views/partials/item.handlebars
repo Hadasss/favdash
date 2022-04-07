@@ -1,17 +1,19 @@
-<div>
-  <div>
-    <p class="name">{{name}}</p>
+<div class="p-3 is-justify-content-center">
+  <div class="is-flex-direction-column">
+    <a class="is-active">
+      {{name}}
+    </a>
     <p class="display_url">{{display_url}}</p>
     <p class="comment_area">{{comment_area}}</p>
-
-  </div>
-  <div>
     <p class="url">{{url}}</p>
-  </div>
 
+  </div>
   <div>
-    <a href="/dashboard/edit-item/{{id}}">Edit item</a>
-    <a href="/dashboard/delete-item/{{id}}">Delete item</a>
+    <a class="is-pulled-right" href="/dashboard/edit-item/{{id}}"><img
+        src="https://img.icons8.com/pastel-glyph/20/000000/edit--v1.png"
+      /></a>
+    <a class="is-pulled-right" href="/dashboard/delete-item/{{id}}"><img
+        src="https://img.icons8.com/ios/20/000000/delete-trash.png"
+      /></a>
   </div>
-
 </div>
