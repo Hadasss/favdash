@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
   })
     .then((dbTopicData) => {
       if (!dbTopicData) {
-        res.status(404).json({ message: "No topic found with this id" });
+        res.status(404).json({ message: "dashboard-routes.js:66 No topic found with this id" });
         return;
       }
       res.render("delete-topic", dbTopicData);
