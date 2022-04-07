@@ -1,20 +1,26 @@
-<div class="notification is-danger">
-    <p>{{name}}</p>  
-    <div>
-    <div>
-        <a href="/dashboard/edit/{{id}}">Edit topic</a>
-     
-        <a href="/dashboard/{{id}}">Delete topic</a>
-    </div>
-
-        <ul>
+<nav class="panel column is-4 m-5 p-0">
+  <p class="is-align-items-end panel-heading has-background-warning">
+   {{name}}
+  <a class="is-pulled-right" href="/dashboard/edit/{{id}}"><img
+        src="https://img.icons8.com/pastel-glyph/20/000000/edit--v1.png"
+      /></a>
+  <a class="is-pulled-right" href="/dashboard/{{id}}"><img
+        src="https://img.icons8.com/ios/20/000000/delete-trash.png"
+      /></a>
+  </p>
+  <div class="panel-block"></div>
+         <ul>
             {{#each items as |item|}}
             <li>
             {{>item}}
             </li>
             {{/each}}
         </ul>
-        <a href="/dashboard/add-item">Add new item</a>
-    </div>
-</div>
 
+  <a class="panel-block"></a>
+  <div class="panel-block">
+    <a class="button is-link is-outlined is-fullwidth" href="/dashboard/add-item">
+      Add Item to Topic
+    </a>
+  </div>
+</nav>

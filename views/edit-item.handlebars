@@ -1,39 +1,40 @@
-<form>
+<a class="m-5" href="/dashboard">&larr; Back to dashboard</a>
+<form class="column is-6 m-5">
 
-<div>
-        <input
-          type="text"
-          class="name"
-          name="name"
-          value="{{item.name}}"
-        />
-        <label class="label">name</label>
-
-
-   <input
-          type="text"
-          name="item-url"
-          class="url"
-          value="{{item.url}}"
-        />
-<label class="label">url</label>
-           <input
-          type="text"
-          class="display-url"
-          name="display-url"
-          value="{{item.display_url}}"
-        />
-
-           <input
-          type="text"
-          class="comment-area"
-          name="comment-area"
-          value="{{item.comment_area}}"
-        />
+  <h2 class="title is-2">Edit your favorite?</h2>
  
+<div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <input class="input name" type="text" placeholder="Name" value="{{item.name}}">
+  </div>
+</div>
 
-  <button id="edit-form" type="button">Update</button>
+<div class="field">
+  <label class="label">Url address</label>
+  <div class="control">
+    <input class="input url" type="text" placeholder="Url address" value="{{item.url}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Display Url</label>
+  <div class="control">
+    <input class="input display-url" type="text" placeholder="Display Url" value="{{item.display_url}}">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Comments</label>
+  <div class="control">
+    <textarea class="textarea comment-area" placeholder="Comments" >{{item.comment_area}}</textarea>
+  </div>
+
+  <button class="mt-5 button is-warning" id="edit-form" type="button">Update</button>
 
 </form>
+
+
+
 
 <script src="/javascript/edit-item.js"></script>

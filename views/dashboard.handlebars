@@ -23,17 +23,18 @@
 
 {{!-- list of existing topics (cards) --}}
 {{!-- {{#if topics.length}} --}}
-<div>
 
-<ul>
-    {{#each topics as |topic|}}
-  <li>
-      {{>topic}}
-  </li>
-  {{/each}}
-</ul>
 
-</div>
+  <div class="is-flex-wrap-wrap">
+    <ul>
+      {{#each topics as |topic|}}
+        <li>
+          {{>topic}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
 {{!-- {{/if}} --}}
 
 <script src="/javascript/add-topic.js"></script>
