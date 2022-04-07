@@ -12,12 +12,13 @@
          <ul>
             {{#each items as |item|}}
             <li>
-            {{>item}}
+              {{> item}}
             </li>
+            {{!-- <div class="panel-block"></div> --}}
+  <a class="panel-block"></a>
             {{/each}}
         </ul>
 
-  <a class="panel-block"></a>
   <div class="panel-block">
     <a class="button is-link is-outlined is-fullwidth" href="/dashboard/add-item">
       Add Item to Topic

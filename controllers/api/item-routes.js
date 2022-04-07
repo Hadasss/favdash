@@ -41,9 +41,9 @@ router.get("/:id", (req, res) => {
 // post new item
 router.post("/", (req, res) => {
   Item.create({
+    name: req.body.name,
     url: req.body.url,
     display_url: req.body.display_url,
-    name: req.body.name,
     comment_area: req.body.comment_area,
   })
     .then((dbItemData) => res.json(dbItemData))

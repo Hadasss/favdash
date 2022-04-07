@@ -31,6 +31,34 @@ router.get("/", withAuth, (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get("/", (req, res) => {
+  Item.findAll({
+    include: [
+      {
+        model: Topic,
+        attributes: ["name"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbItemData) => {
+      const items = dbItemData.map((item) => item.get({ plain: true }));
+      res.render("dashboard", { items, loggedIn: true });
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get("/add-item", (req, res) => {
+  res.render("add-item");
+});
+
 router.get("/edit/:id", (req, res) => {
   Topic.findOne(
     {
@@ -63,7 +91,9 @@ router.get("/:id", (req, res) => {
   })
     .then((dbTopicData) => {
       if (!dbTopicData) {
-        res.status(404).json({ message: "dashboard-routes.js:66 No topic found with this id" });
+        res.status(404).json({
+          message: "dashboard-routes.js:66 No topic found with this id",
+        });
         return;
       }
       res.render("delete-topic", dbTopicData);
@@ -86,14 +116,6 @@ router.delete("/:id", (req, res) => {
       res.json(dbTopicData);
     })
     .catch((err) => res.status(500).json(err));
-});
-
-router.get("/add-item", (req, res) => {
-  Item.findAll().then((dbItemData) => {
-    const items = dbItemData.map((item) => item.get({ plain: true }));
-
-    res.render("add-item", { items });
-  });
 });
 
 router.get("/edit-item/:id", (req, res) => {
