@@ -91,11 +91,14 @@
 */
 
 #footer{
-    display: flex;
-    flex-direction: row;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
     background-color: #EFF5FB;
+}
+
+.footer-item{
+    width: 100%;
+    height: 100%;
 }
 
