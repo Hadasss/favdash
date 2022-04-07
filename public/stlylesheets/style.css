@@ -1,27 +1,31 @@
-:root {
+/* :root {
+    font-family: 'Poppins', sans-serif;
+} */
+
+/* :root {
     --main-color: orange;
     --secondary-color: purple;
     --third-color: yellow;
-}
+} */
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-}
+} */
 
-body {
+/* body { */
   /* COLOR OF PAGE AND FONT LANG! */
-    color: whitesmoke;
+    /* color: whitesmoke;
     background-color: var(--secondary-color);
     font-family: Helvetica, Arial, sans-serif;
 
-}
+} */
 
 
  /* header styling */
- header {
+ /* header {
      padding: 10px 20px;
      background-color: var(--main-color);
      border-style: solid;
@@ -43,9 +47,9 @@ body {
      text-decoration: none;
      color: var(--secondary-color);
 
- }
+ } */
 
-nav {
+/* nav {
      float: right;
      margin: 15px 0;
 
@@ -100,4 +104,4 @@ nav {
      margin: 10px 10px;
      
  }
-  
+   */
