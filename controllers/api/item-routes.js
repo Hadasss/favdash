@@ -22,10 +22,6 @@ router.get("/:id", (req, res) => {
         model: User,
         attributes: ["username"],
       },
-      //   {
-      //     model: Topic,
-      //     attributes: ["id", "name"],
-      //   },
     ],
   })
     .then((dbItemData) => {
