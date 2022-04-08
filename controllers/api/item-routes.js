@@ -5,7 +5,18 @@ const { User, Topic, Item } = require("../../models");
 
 // get all items
 router.get("/", (req, res) => {
-  Item.findAll()
+  Item.findAll({
+    include: [
+      {
+        model: Topic,
+        attributes: ["id", "name"],
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
     .then((dbItemData) => res.json(dbItemData))
     .catch((err) => res.status(500).json(err));
 });
@@ -41,6 +52,8 @@ router.post("/", (req, res) => {
     url: req.body.url,
     display_url: req.body.display_url,
     comment_area: req.body.comment_area,
+    user_id: req.session.user_id,
+    topic_id: req.body.topic_id,
   })
     .then((dbItemData) => res.json(dbItemData))
     .catch((err) => res.status(500).json(err));

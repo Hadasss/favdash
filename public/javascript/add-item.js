@@ -1,8 +1,12 @@
-async function addItemHandler() {
+async function addItemHandler(e) {
+  e.preventDefault();
   const name = document.querySelector("#name").value.trim();
   const url = document.querySelector("#url").value.trim();
   const display_url = document.querySelector("#display-url").value.trim();
   const comment_area = document.querySelector("#comment-area").value.trim();
+  // TODO - add const topic_id;
+  // const topic_id = e.target.parentElement.id;
+  // console.log(topic_id);
 
   const response = await fetch("/api/items", {
     method: "POST",
@@ -11,6 +15,7 @@ async function addItemHandler() {
       url,
       display_url,
       comment_area,
+      // topic_id,
     }),
     headers: { "Content-Type": "application/json" },
   });
@@ -22,4 +27,4 @@ async function addItemHandler() {
   }
 }
 
-document.querySelector("#add-item").addEventListener("click", addItemHandler);
+document.querySelector("#add-item").addEventListener("submit", addItemHandler);
