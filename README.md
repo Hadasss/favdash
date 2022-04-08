@@ -41,10 +41,14 @@ Web based, easy and simple way to save and navigate your web favorites, links an
 There are no tests for this program.
 
 ## Screenshots
+![image](https://user-images.githubusercontent.com/80355222/162545938-ae3cfbb8-a382-4dee-8df1-a0848d068c4d.png)
+
+![image](https://user-images.githubusercontent.com/80355222/162546045-6fee0459-0aa1-4847-acb2-1bf81ba8cdf4.png)
+
+![image](https://user-images.githubusercontent.com/80355222/162545999-f7c8a926-bf7b-443d-80f8-8573ea20b161.png)
 
 ## Deployment
-
-https://tech-blob.herokuapp.com/
+https://fav-dash.herokuapp.com/
 
 ## Technologies
 
