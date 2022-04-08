@@ -1,11 +1,16 @@
-<a href="/dashboard">&larr; Back to dashboard</a>
-
-<div>
+<div class="m-5">
+  <a href="/dashboard">&larr; Back to dashboard</a>
+  <section class="section is-medium">
+  <h3 class="title is-3">Are you sure you want to delete?</h3>
 
   <p>{{topic.name}}</p>
 
+  <button
+    class="mt-5 button is-warning"
+    id="delete-topic"
+    type="button"
+  >Delete</button>
 </div>
-
-<button id="delete-topic">Delete</button>
+</section>
 
 <script src="/javascript/delete-topic.js"></script>

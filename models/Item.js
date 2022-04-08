@@ -12,6 +12,9 @@ Item.init(
       autoIncrement: true,
       allowNull: false,
     },
+    name: {
+      type: DataTypes.STRING,
+    },
     url: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,9 +23,6 @@ Item.init(
       },
     },
     display_url: {
-      type: DataTypes.STRING,
-    },
-    name: {
       type: DataTypes.STRING,
     },
     comment_area: {

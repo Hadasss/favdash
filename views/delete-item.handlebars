@@ -1,11 +1,15 @@
-<a href="/dashboard">&larr; Back to dashboard</a>
+  <div class="m-5">
+  <a href="/dashboard">&larr; Back to dashboard</a>
+  <h3 class="title is-3">Are you sure you want to delete?</h3>
 
-<div>
+  <p> {{item}}</p>
 
-  {{item}}
-
+  <button
+    class="mt-5 button is-warning"
+    id="delete-item"
+    type="button"
+  >Delete</button>
 </div>
 
-<button id="delete-item">Delete</button>
 
 <script src="/javascript/delete-item.js"></script>

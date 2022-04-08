@@ -1,23 +1,49 @@
-<div>
+<div class="column is-6 m-5">
   <a href="/dashboard">&larr; Back to dashboard</a>
-  <h3>Add item:</h3>
+  <h2 class="title is-2">Add item:</h2>
 
-  <input type="text" />
-  <label class="name">Name</label>
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input id="name" class="input" type="text" placeholder="Name" />
+    </div>
+  </div>
 
-  <input type="text" />
-  <label class="url">Url</label>
+  <div class="field">
+    <label class="label">Url address</label>
+    <div class="control">
+      <input id="url" class="input" type="text" placeholder="Url address" />
+    </div>
+  </div>
 
-  <input type="text" />
-  <label class="display-url">Display Url</label>
+  <div class="field">
+    <label class="label">Display Url</label>
+    <div class="control">
+      <input
+        id="display-url"
+        class="input"
+        type="text"
+        placeholder="Display Url"
+      />
+    </div>
+  </div>
 
-  <textarea
-    name="comment-area"
-    class="comment-area"
-    placeholder="Details here"
-  ></textarea>
+  <div class="field">
+    <label class="label">Comments</label>
+    <div class="control">
+      <textarea
+        id="comment-area"
+        class="textarea"
+        placeholder="Comments"
+      ></textarea>
+    </div>
+  </div>
 
-  <button id="add-item">Add</button>
+  <button
+    class="mt-5 button is-warning"
+    id="add-item"
+    type="button"
+  >Add</button>
 
 </div>
 
