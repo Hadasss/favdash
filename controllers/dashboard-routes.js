@@ -33,10 +33,16 @@ router.get("/", withAuth, (req, res) => {
 
 router.get("/", withAuth, (req, res) => {
   Item.findAll({
-    where: {
-      user_id: req.session.user_id,
-    },
-    attributes: ["id", "name", "url", "display_url", "comment_area"],
+    attributes: [
+      "id",
+      "name",
+      "url",
+      "display_url",
+      "comment_area",
+      // sequelize.literal(
+      //   `(SELECT COUNT (*) FROM item WHERE topic_id = topic.id)`
+      // ),
+    ],
     include: [
       {
         model: Topic,
