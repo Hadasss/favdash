@@ -1,10 +1,10 @@
-<nav class="panel column is-4 m-5 p-0">
-  <p class="is-align-items-end panel-heading has-background-warning">
+<nav class="panel column m-5 p-0">
+  <p class="is-align-items-end panel-heading has-background-warning has-text-grey-dark" id="topic-name">
    {{name}}
   <a class="is-pulled-right" href="/dashboard/edit/{{id}}"><img
         src="https://img.icons8.com/pastel-glyph/20/000000/edit--v1.png"
       /></a>
-  <a class="is-pulled-right" href="/dashboard/{{id}}"><img
+  <a class="is-pulled-right ml-3" href="/dashboard/{{id}}"><img
         src="https://img.icons8.com/ios/20/000000/delete-trash.png"
       /></a>
   </p>
@@ -20,8 +20,10 @@
         </ul>
 
   <div class="panel-block">
-    <a class="button is-link is-outlined is-fullwidth" href="/dashboard/add-item">
+    <a class="button is-link is-outlined is-fullwidth" href="/dashboard/add-item/{{id}}">
       Add Item to Topic
     </a>
   </div>
 </nav>
+
+<script sec="/javascript/add-item.js"></script>
