@@ -130,7 +130,7 @@ router.get("/edit-item/:id", withAuth, (req, res) => {
         res.status(400).json({ message: "no item was found with this id" });
         return;
       }
-      res.render("edit-topic", dbTopicData, { loggedIn: req.session.loggedIn });
+      res.render("edit-topic", dbItemData);
     })
     .catch((err) => res.status(500).json(err));
 });
