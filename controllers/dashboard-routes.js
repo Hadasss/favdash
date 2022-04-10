@@ -139,7 +139,7 @@ router.get("/edit-item/:id", (req, res) => {
         res.status(400).json({ message: "no item was found with this id" });
         return;
       }
-      res.render("edit-item", dbItemData);
+      res.render("edit-topic", dbTopicData, { loggedIn: req.session.loggedIn });
     })
     .catch((err) => res.status(500).json(err));
 });
