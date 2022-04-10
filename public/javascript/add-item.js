@@ -2,20 +2,17 @@ async function addItemHandler(e) {
   e.preventDefault();
   const name = document.querySelector("#name").value.trim();
   const url = document.querySelector("#url").value.trim();
-  const display_url = document.querySelector("#display-url").value.trim();
   const comment_area = document.querySelector("#comment-area").value.trim();
-  // TODO - add const topic_id;
-  // const topic_id = e.target.parentElement.id;
-  // console.log(topic_id);
-
+  const topic_id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
   const response = await fetch("/api/items", {
     method: "POST",
     body: JSON.stringify({
       name,
       url,
-      display_url,
       comment_area,
-      // topic_id,
+      topic_id,
     }),
     headers: { "Content-Type": "application/json" },
   });

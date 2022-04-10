@@ -32,7 +32,6 @@ router.get("/:id", (req, res) => {
         attributes: [
           "id",
           "url",
-          "display_url",
           "user_id",
           "name",
           "comment_area",

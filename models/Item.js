@@ -22,9 +22,6 @@ Item.init(
         isUrl: true,
       },
     },
-    display_url: {
-      type: DataTypes.STRING,
-    },
     comment_area: {
       type: DataTypes.STRING,
     },

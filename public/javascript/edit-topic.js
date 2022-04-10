@@ -1,6 +1,6 @@
 async function editTopicHandler(e) {
   e.preventDefault();
-  const name = document.querySelector("#topic-name").value.trim();
+  const name = document.querySelector("#topic-name-edit").value.trim();
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1

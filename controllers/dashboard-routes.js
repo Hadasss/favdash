@@ -12,7 +12,7 @@ router.get("/", withAuth, (req, res) => {
     include: [
       {
         model: Item,
-        attributes: ["id", "url", "display_url", "name", "comment_area"],
+        attributes: ["id", "url", "name", "comment_area"],
         include: {
           model: User,
           attributes: ["username"],
@@ -33,16 +33,7 @@ router.get("/", withAuth, (req, res) => {
 
 router.get("/", withAuth, (req, res) => {
   Item.findAll({
-    attributes: [
-      "id",
-      "name",
-      "url",
-      "display_url",
-      "comment_area",
-      // sequelize.literal(
-      //   `(SELECT COUNT (*) FROM item WHERE topic_id = topic.id)`
-      // ),
-    ],
+    attributes: ["id", "name", "url", "comment_area", "topic_id"],
     include: [
       {
         model: Topic,
@@ -65,11 +56,11 @@ router.get("/", withAuth, (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/add-item", (req, res) => {
+router.get("/add-item/:id", withAuth, (req, res) => {
   res.render("add-item");
 });
 
-router.get("/edit/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Topic.findOne(
     {
       where: {
@@ -93,7 +84,7 @@ router.get("/edit/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", withAuth, (req, res) => {
   Topic.findOne({
     where: {
       id: req.params.id,
@@ -102,7 +93,7 @@ router.get("/:id", (req, res) => {
     .then((dbTopicData) => {
       if (!dbTopicData) {
         res.status(404).json({
-          message: "dashboard-routes.js:66 No topic found with this id",
+          message: "No topic found with this id",
         });
         return;
       }
@@ -112,7 +103,7 @@ router.get("/:id", (req, res) => {
 });
 
 // add delete topic
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Topic.destroy({
     where: {
       id: req.params.id,
@@ -128,7 +119,7 @@ router.delete("/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/edit-item/:id", (req, res) => {
+router.get("/edit-item/:id", withAuth, (req, res) => {
   Item.findOne({
     where: {
       id: req.params.id,
@@ -139,12 +130,12 @@ router.get("/edit-item/:id", (req, res) => {
         res.status(400).json({ message: "no item was found with this id" });
         return;
       }
-      res.render("edit-item", dbItemData);
+      res.render("edit-topic", dbItemData);
     })
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/delete-item/:id", (req, res) => {
+router.get("/delete-item/:id", withAuth, (req, res) => {
   Item.findOne({
     where: {
       id: req.params.id,

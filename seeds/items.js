@@ -3,13 +3,13 @@ const { Item } = require("../models");
 const itemsData = [
   {
     url: "www.google.com",
-    display_url: "Google",
+    name: "Google",
     user_id: 1,
     topic_id: 1,
   },
   {
     url: "www.yahoo.com",
-    display_url: "Yahoo",
+    name: "Yahoo",
     user_id: 1,
     topic_id: 1,
   },
