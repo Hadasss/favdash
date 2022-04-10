@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { User, Topic, Item } = require("../../models");
+const withAuth = require("../../utils/authentication");
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Topic.findAll({
     include: [
       {
@@ -10,7 +11,7 @@ router.get("/", (req, res) => {
       },
       {
         model: Item,
-        attributes: ["id", "url", "display_url", "name", "comment_area"],
+        attributes: ["id", "url", "name", "comment_area"],
       },
     ],
   })
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", withAuth, (req, res) => {
   Topic.findOne({
     where: {
       id: req.params.id,
@@ -55,7 +56,7 @@ router.get("/:id", (req, res) => {
 });
 
 // post new topic
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Topic.create({
     name: req.body.name,
     user_id: req.session.user_id,
@@ -65,7 +66,7 @@ router.post("/", (req, res) => {
 });
 
 // update topic
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Topic.update(
     {
       name: req.body.name,
@@ -93,7 +94,7 @@ router.put("/:id", (req, res) => {
 });
 
 // delete topic;
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Topic.destroy({
     where: {
       id: req.params.id,

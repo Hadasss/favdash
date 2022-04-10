@@ -2,9 +2,10 @@ const router = require("express").Router();
 const { stat } = require("fs");
 const sequelize = require("../../config/connection");
 const { User, Topic, Item } = require("../../models");
+const withAuth = require("../../utils/authentication");
 
 // get all items
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Item.findAll({
     include: [
       {
@@ -22,12 +23,12 @@ router.get("/", (req, res) => {
 });
 
 // get single item
-router.get("/:id", (req, res) => {
+router.get("/:id", withAuth, (req, res) => {
   Item.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "url", "display_url", "name", "comment_area"],
+    attributes: ["id", "url", "name", "comment_area"],
     include: [
       {
         model: User,
@@ -46,11 +47,10 @@ router.get("/:id", (req, res) => {
 });
 
 // post new item
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Item.create({
     name: req.body.name,
     url: req.body.url,
-    display_url: req.body.display_url,
     comment_area: req.body.comment_area,
     user_id: req.session.user_id,
     topic_id: req.body.topic_id,
@@ -60,7 +60,7 @@ router.post("/", (req, res) => {
 });
 
 // update item
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Item.update(req.body, {
     where: {
       id: req.params.id,
@@ -90,7 +90,7 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Item.destroy({
     where: {
       id: req.params.id,

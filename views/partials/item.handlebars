@@ -1,13 +1,9 @@
 <div class="p-3 is-justify-content-center">
   <div class="is-flex-direction-column">
-    <a class="is-active" id="name">
-      {{name}}
-    </a>
-    {{!-- <p id="display_url">{{display_url}}</p> --}}
-    <p id="url"><a href="http://{{url}}" target="_blank">{{display_url}}</a></p>
-    <p id="comment_area">{{comment_area}}</p>
-
+    <p><a href="http://{{url}}" target="_blank">{{name}}</a></p>
+    <p class="has-text-weight-light">{{comment_area}}</p>
   </div>
+
   <div>
     <a class="is-pulled-right" href="/dashboard/edit-item/{{id}}"><img
         src="https://img.icons8.com/pastel-glyph/20/000000/edit--v1.png"
