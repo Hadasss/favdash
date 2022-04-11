@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fav Dash</title>
-    <link rel="stylesheet" href="/stlylesheets/style.css" />
+    {{! <link rel="stylesheet" href="/stlylesheets/style.css" /> }}
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -13,106 +13,112 @@
   </head>
 
   <body>
-      <section class="hero is-small has-background-info-light">
-        <div class="hero-body">
-           <nav
-      class="navbar has-background-info-light"
-      role="navigation"
-      aria-label="main-navigation"
-    >
-      {{#if loggedIn}}
-        <div class="navbar-brand">
-          <a
-            href="/dashboard"
-            class="navbar-item title has-text-info-dark ml-5"
-          >Dashboard
-          </a>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-info is-rounded mr-5">
-                <strong id="logout">Logout</strong>
+    <section class="hero is-small has-background-info-light">
+      <div class="hero-body">
+        <nav
+          class="navbar has-background-info-light"
+          role="navigation"
+          aria-label="main-navigation"
+        >
+          {{#if loggedIn}}
+            <div class="navbar-brand">
+              <a
+                href="/dashboard"
+                class="navbar-item title has-text-info-dark ml-5"
+              >Dashboard
+              </a>
+            </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-info is-rounded mr-5">
+                    <strong id="logout">Logout</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {{else}}
+            <div class="navbar-brand has-background-info-light">
+              <p
+                class="navbar-item title is-family-secondary ml-5 has-text-info-dark"
+              >Fav-Dash</p>
+            </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-info is-rounded mr-5" href="/login">
+                    <strong>Login</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          {{/if}}
+        </nav>
+      </div>
+    </section>
+
+    <main>
+      {{{body}}}
+
+    </main>
+
+    <footer class="footer flex-wrap-wrap has-background-info-light p-5">
+      <div class="content has-text-centered">
+
+        <p class="pb-2">
+          <strong>Made With
+            <ion-icon name="heart-circle-outline"></ion-icon>
+            by The Coding Cavillers</strong>
+        </p>
+        <div class="columns p-5">
+          <div class="column">
+            <div class="has-text-justify button is-white-ter is-rounded">
+              <a href="https://github.com/Hadasss" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                Hadas
+              </a>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="has-text-justify button is-white-ter is-rounded">
+              <a
+                href="https://github.com/DavidTJGriffin"
+                class="has-text-black"
+              >
+                <ion-icon name="logo-github"></ion-icon>
+                David Griffin
+              </a>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="has-text-justify button is-white-ter is-rounded">
+              <a href="https://github.com/BeccaHurtado" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                Rebecca Hurtado
+              </a>
+            </div>
+          </div>
+
+          <div class="column buttons">
+            <div class="has-text-justify button is-white-ter is-rounded">
+              <a href="https://github.com/SpiffTrip" class="has-text-black">
+                <ion-icon name="logo-github"></ion-icon>
+                Christian Adkins
               </a>
             </div>
           </div>
         </div>
-    {{else}}
-    <div class="navbar-brand has-background-info-light">
-      <p class="navbar-item title is-family-secondary ml-5 has-text-info-dark">Fav-Dash</p>
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-info is-rounded mr-5" href="/login">
-            <strong>Login</strong>
-          </a>
-        </div>
+
       </div>
-    </div>
+    </footer>
 
-      {{/if}}
-    </nav> 
-        </div>
-    </section>
-    
-    <main>
-      {{{body}}}
-
-  </main>
-
-    
-    <footer class="footer flex-wrap-wrap has-background-info-light p-5">
-  <div class="content has-text-centered">
-
-    <p class="pb-2">
-      <strong>Made With <ion-icon name="heart-circle-outline"></ion-icon> by The Coding Cavillers</strong>
-    </p>
-    <div class="columns p-5">
-        <div class="column">
-            <div class="has-text-justify button is-white-ter is-rounded">
-                <a href="https://github.com/Hadasss" class="has-text-black">
-                <ion-icon name="logo-github"></ion-icon>
-                Hadas
-                </a>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="has-text-justify button is-white-ter is-rounded">
-                <a href="https://github.com/DavidTJGriffin" class="has-text-black">
-                <ion-icon name="logo-github"></ion-icon>
-                David Griffin
-                </a>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="has-text-justify button is-white-ter is-rounded">
-                <a href="https://github.com/BeccaHurtado" class="has-text-black">
-                <ion-icon name="logo-github"></ion-icon>
-                Rebecca Hurtado
-                </a>
-            </div>
-        </div>
-
-        <div class="column buttons">
-            <div class="has-text-justify button is-white-ter is-rounded">
-                <a href="https://github.com/SpiffTrip" class="has-text-black">
-                <ion-icon name="logo-github"></ion-icon>
-                Christian Adkins
-                </a>
-            </div>
-        </div>
-    </div>
-    
-  </div>
-</footer>
-
-<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    {{#if loggedIn}}
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-    <script src="/javascript/logout.js"></script>
+    {{#if loggedIn}}
+      <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+      <script src="/javascript/logout.js"></script>
     {{/if}}
   </body>
 
