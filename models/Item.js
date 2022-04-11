@@ -2,7 +2,7 @@ const sequelize = require("../config/connection");
 const { Model, DataTypes } = require("sequelize");
 const { User, Topic } = require("../models");
 
-class Item extends Model {}
+class Item extends Model { }
 
 Item.init(
   {
@@ -23,6 +23,18 @@ Item.init(
       },
     },
     comment_area: {
+      type: DataTypes.STRING,
+    },
+    link_preview_url: {
+      type: DataTypes.STRING,
+    },
+    link_image: {
+      type: DataTypes.STRING,
+    },
+    link_title: {
+      type: DataTypes.STRING,
+    },
+    link_description: {
       type: DataTypes.STRING,
     },
     user_id: {
