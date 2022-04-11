@@ -1,22 +1,24 @@
-<form class="column is-6 m-5" id="update-topic">
-  <a href="/dashboard">&larr; Back to dashboard</a>
+<section class="section is-medium">
+  <form class="column is-6 m-5" id="update-topic">
+    <a href="/dashboard">&larr; Back to dashboard</a>
 
-  <h2 class="title is-2">Edit your topic?</h2>
-  <div class="field">
-    <label class="label">Topic Name</label>
+    <h2 class="title is-2">Edit your topic?</h2>
+    <div class="field">
+      <label class="label">Topic Name</label>
 
-    <div class="control">
-      <input
-        class="input name"
-        type="text"
-        id="topic-name-edit"
-        placeholder="Topic Name"
-        value="{{topic.name}}"
-      />
+      <div class="control">
+        <input
+          class="input name"
+          type="text"
+          id="topic-name-edit"
+          placeholder="Topic Name"
+          value="{{topic.name}}"
+        />
+      </div>
     </div>
-  </div>
-  <button class="mt-5 button is-warning" type="submit">Update</button>
+    <button class="mt-5 button is-warning" type="submit">Update</button>
 
-</form>
+  </form>
+</section>
 
 <script src="/javascript/edit-topic.js"></script>
